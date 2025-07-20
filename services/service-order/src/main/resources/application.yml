@@ -1,0 +1,36 @@
+server:
+  port: 8000
+spring:
+  profiles:
+    active: prod # 当前激活的namespace
+  application:
+    name: service-order # 指定要配置的微服务
+  cloud:
+    nacos:
+      server-addr: 127.0.0.1:8848
+      config:
+        namespace: ${spring.profiles.active:public} # 加载namespace配置(默认public)
+---
+spring:
+  config:
+    import:
+      - nacos:common.properties?group=order # 设置data-id和group
+      - nacos:database.properties?group=order
+    activate:
+      on-profile: dev
+---
+spring:
+  config:
+    import:
+      - nacos:common.properties?group=order # 设置data-id和group
+      - nacos:database.properties?group=order
+      - nacos:common.properties?group=product
+    activate:
+      on-profile: test
+---
+spring:
+  config:
+    import:
+      - nacos:common.properties?group=order # 设置data-id和group
+    activate:
+      on-profile: prod
