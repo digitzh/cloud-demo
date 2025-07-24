@@ -14,7 +14,7 @@ public class LoadBalancerTest {
     LoadBalancerClient loadBalancerClient;
     DiscoveryClient discoveryClient;
 
-    // 报错，原因不明：
+    // TODO: 报错，原因不明：
     // java.lang.NullPointerException: Cannot invoke "org.springframework.cloud.client.loadbalancer.
     // LoadBalancerClient.choose(String)" because "this.loadBalancerClient" is null
     @Test
