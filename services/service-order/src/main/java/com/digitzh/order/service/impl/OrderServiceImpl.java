@@ -1,6 +1,6 @@
 package com.digitzh.order.service.impl;
 
-import com.alibaba.nacos.shaded.com.google.common.collect.Lists;
+import com.alibaba.csp.sentinel.annotation.SentinelResource;
 import com.digitzh.order.bean.Order;
 import com.digitzh.order.feign.ProductFeignClient;
 import com.digitzh.order.service.OrderService;
@@ -29,6 +29,7 @@ public class OrderServiceImpl implements OrderService {
     @Autowired
     ProductFeignClient productFeignClient;
 
+    @SentinelResource(value = "createOrder", fallback = "createOrderFallback")
     @Override
     public Order createOrder(Long productId, Long userId) {
         // 假设只有1种商品
@@ -44,6 +45,16 @@ public class OrderServiceImpl implements OrderService {
         // 商品列表
         order.setProductList(List.of(product));
 
+        return order;
+    }
+
+    public Order createOrderFallback(Long productId, Long userId, Throwable e){
+        Order order = new Order();
+        order.setId(0L);
+        order.setTotalAmount(new BigDecimal(0));
+        order.setUserId(userId);
+        order.setNickName("Error");
+        order.setAddress("Error"+e.getClass());
         return order;
     }
 

@@ -17,6 +17,16 @@ public class ProductController {
     public Product getProduct(@PathVariable("id") Long productId){
         System.out.println("called"); // 测试由哪个实例调用
         Product product = productService.getProductById(productId);
+//        // 休眠1秒，模拟慢调用
+//        try {
+//            Thread.sleep(1000);
+//        } catch (InterruptedException e) {
+//            throw new RuntimeException(e);
+//        }
+
+        // 模拟异常调用
+//        int i = 1 / 0;
+
         return product;
     }
 }

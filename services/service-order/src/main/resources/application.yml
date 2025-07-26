@@ -10,6 +10,16 @@ spring:
       server-addr: 127.0.0.1:8848
       config:
         namespace: ${spring.profiles.active:public} # 加载namespace配置(默认public)
+    # feign
+    openfeign:
+      circuitbreaker:
+        enabled: true
+    # sentinel
+    sentinel:
+      transport:
+        dashboard: localhost:8080
+      eager: true
+      web-context-unify: false
 ---
 spring:
   config:
