@@ -5,8 +5,11 @@ import com.digitzh.product.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+// 使用Gateway的"路径重写"，可省略该注解
+//@RequestMapping("/api/product")
 @RestController
 public class ProductController {
     @Autowired

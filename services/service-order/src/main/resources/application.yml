@@ -1,3 +1,4 @@
+# 配置项较多，采用.yml
 server:
   port: 8000
 spring:

@@ -1,16 +1,18 @@
 package com.digitzh.order.controller;
 
 import com.alibaba.csp.sentinel.annotation.SentinelResource;
-import com.alibaba.csp.sentinel.slots.block.BlockException;
 import com.digitzh.order.bean.Order;
 import com.digitzh.order.properties.OrderProperties;
 import com.digitzh.order.service.OrderService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+// 使用Gateway的"路径重写"，可省略该注解
+//@RequestMapping("/api/order")
 @Slf4j
 //@RefreshScope
 @RestController
