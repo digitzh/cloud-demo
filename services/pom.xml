@@ -14,6 +14,10 @@
     <modules>
         <module>service-product</module>
         <module>service-order</module>
+        <module>seata-order</module>
+        <module>seata-account</module>
+        <module>seata-storage</module>
+        <module>seata-business</module>
     </modules>
 
     <properties>
@@ -48,6 +52,10 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <scope>annotationProcessor</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-seata</artifactId>
         </dependency>
 
     </dependencies>
